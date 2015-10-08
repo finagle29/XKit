@@ -1,7 +1,7 @@
 /*
 
 	Bridge2 for XKit
-	Version 2.2
+	Version 2.2.1
 
 	(c) 2011 - 2013 STUDIOXENIX
 
@@ -10,15 +10,18 @@
 var bridge_error = false;
 var bridge_error_object;
 var xkit_storage = {};
-var bridge_ver = "2.1";
+var bridge_ver = "2.2.1";
+var disallowed_urls_regex = /.*\d*\.media\.tumblr.*|.*tumblr\.com\/upload\/image.*/i;
 
 try {
-	var storage = chrome.storage.local;
-	var storage_loaded = false;
-	var framework_version = getVersion();
-	var storage_used = -1;
-	var storage_max = -1;
-	init_bridge();
+    if (!window.location.href.match(disallowed_urls_regex)) {
+		var storage = chrome.storage.local;
+		var storage_loaded = false;
+		var framework_version = getVersion();
+		var storage_used = -1;
+		var storage_max = -1;
+		init_bridge();
+	}
 } catch(e) {
 	console.log("[XKIT] Caught bridge error: " + e.message);
 	bridge_error_object = e;
