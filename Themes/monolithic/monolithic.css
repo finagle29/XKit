@@ -1,5 +1,5 @@
 /* NAME Monolithic **/
-/* VERSION 1.1.1 **/
+/* VERSION 1.1.2 **/
 /* DESCRIPTION A simple gray theme with no space between posts **/
 /* DEVELOPER STUDIOXENIX **/
 
@@ -44,6 +44,18 @@
 
 .post_full .post_permalink {
 	border-color: transparent transparent #ccc #ccc;
+	background: none;
+}
+
+.post.post_full {
+	transition: all 150ms ease-in;
+	-webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.post.post_full:hover {
+	-webkit-clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
 }
 
 #right_column,

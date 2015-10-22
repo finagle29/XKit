@@ -1,5 +1,5 @@
 /* NAME Orange Wall **/
-/* VERSION 1.0.4 **/
+/* VERSION 1.0.5 **/
 /* DESCRIPTION That is one orange wallpaper you got there **/
 /* DEVELOPER STUDIOXENIX **/
 
@@ -117,5 +117,17 @@ li.post:hover {
 }
 
 .post_full .post_permalink {
-	border-color: #f49a00 #f49a00 transparent transparent;
+	border-color: transparent transparent #ccc #ccc;
+	background: none;
+}
+
+.post.post_full {
+	transition: all 150ms ease-in;
+	-webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.post.post_full:hover {
+	-webkit-clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
 }

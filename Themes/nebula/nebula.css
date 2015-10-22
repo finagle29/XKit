@@ -1,5 +1,5 @@
 /* NAME Nebula **/
-/* VERSION 2.0.1 **/
+/* VERSION 2.0.2 **/
 /* DESCRIPTION A modern, translucent dashboard theme with nebula background **/
 /* DEVELOPER internet-tears **/
 
@@ -125,6 +125,17 @@
 .post_full .post_permalink {
 	border-color: transparent transparent #ccc #ccc;
     background: transparent;
+}
+
+.post.post_full {
+	transition: all 150ms ease-in;
+	-webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.post.post_full:hover {
+	-webkit-clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
 }
 
 .identity .right_column>.controls_section:first-child {

@@ -1,5 +1,5 @@
 /* NAME Mega Rainbows **/
-/* VERSION 1.0.3 **/
+/* VERSION 1.0.4 **/
 /* DESCRIPTION Extremely colorful sidebars **/
 /* DEVELOPER dahlkzer **/
 
@@ -137,8 +137,20 @@ ul.controls_section {
 	border-bottom: 12px solid rgba(0, 0, 0, 0.5)!important;
 }
 
-.post_permalink {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90GGA4RI4O5UOkAAAAdaVRYdENvbW1lbnQAAAAAAENyZWF0ZWQgd2l0aCBHSU1QZC5lBwAAALtJREFUSMftlTtSxDAQRF97BUR7AMxl4OS+ANewtDnRflCTUi6wZm0XJO5MyXulnikJ9vx19P3g6hG5gAomG7KoBTTy6dMl1fykhxKFp4mqxwIZJGQwHaLCQTzeOs6+EhWkH+6ymSD9UtYmgjQzjdWC1Bj3KkEK7NNiQQoubFMALIQHBJFaCvC8SBCA51n4jCAC/1haURMu6c32ALzeKwjH9uBoqke7vjdfxakAOAJ9cw4mq9PL/sn8f74AOSOrjN8ufMgAAAAASUVORK5CYII=)!important;
+.post_full .post_permalink {
+	border-color: transparent transparent #ccc #ccc;
+	background: none;
+}
+
+.post.post_full {
+	transition: all 150ms ease-in;
+	-webkit-clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.post.post_full:hover {
+	-webkit-clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
+	clip-path: polygon(calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 0);
 }
 
 .post .post_content blockquote {
