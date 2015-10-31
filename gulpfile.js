@@ -1,4 +1,5 @@
-/* jshint node: true */
+/* jshint node: true,
+   globalstrict: true */
 'use strict';
 
 var cache = require('gulp-cached'),
@@ -53,6 +54,10 @@ gulp.task('clean:chrome', function(cb) {
 	del([BUILD_DIR + '/chrome'], cb);
 });
 
+gulp.task('clean:opera', function(cb) {
+	del([BUILD_DIR + '/opera'], cb);
+});
+
 gulp.task('clean:firefox', function(cb) {
 	del([BUILD_DIR + '/firefox'], cb);
 });
@@ -78,7 +83,8 @@ gulp.task('lint:scripts', function() {
 		paths.scripts.extensions,
 		['Chrome/**/*.js',
 		 'Firefox/**/*.js',
-		 'Safari/**/*.js']
+		 'Safari/**/*.js',
+		 'Opera/**/*.js']
 	);
 
 	return gulp.src(src)
@@ -122,6 +128,26 @@ gulp.task('compress:chrome', ['copy:chrome'], function() {
 	return gulp.src(BUILD_DIR + '/chrome/**/*')
 		.pipe(zip('new-xkit-' + chromeManifest.version + '.zip'))
 		.pipe(gulp.dest(BUILD_DIR + '/chrome'));
+});
+
+gulp.task('copy:opera', ['clean:opera', 'lint'], function() {
+	var src = [].concat(
+		paths.scripts.core,
+		paths.css.core,
+		paths.vendor,
+		['Opera/**/*']
+	);
+
+	return gulp.src(src)
+		.pipe(gulp.dest(BUILD_DIR + '/opera'));
+});
+
+gulp.task('compress:opera', ['copy:opera'], function() {
+	var operaManifest = JSON.parse(fs.readFileSync('Opera/manifest.json'));
+
+	return gulp.src(BUILD_DIR + '/opera/**/*')
+		.pipe(zip('new-xkit-' + operaManifest.version + '.zip'))
+		.pipe(gulp.dest(BUILD_DIR + '/opera'));
 });
 
 gulp.task('copy:firefox', ['clean:firefox', 'lint'], function() {
@@ -169,6 +195,8 @@ gulp.task('copy:safari', ['clean:safari', 'lint'], function() {
 
 gulp.task('build:chrome', ['compress:chrome']);
 
+gulp.task('build:opera', ['compress:opera']);
+
 gulp.task('build:firefox', ['compress:firefox']);
 
 gulp.task('build:safari', ['copy:safari']);
@@ -192,7 +220,7 @@ gulp.task('build:themes', ['clean:themes'], function(cb) {
 		.pipe(gulp.dest('Extensions/dist/page'));
 });
 
-gulp.task('build', ['build:chrome', 'build:firefox', 'build:safari']);
+gulp.task('build', ['build:chrome', 'build:firefox', 'build:safari', 'build:opera']);
 
 gulp.task('watch', function() {
 	gulp.watch('**/*.js', ['lint:scripts']);
