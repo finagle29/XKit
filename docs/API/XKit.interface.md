@@ -247,6 +247,27 @@ XKit.interface.post_window.switch_blog("xkit-extension");
 
 <a name="pw_type" href="XKit.interface.md#pw_type">#</a> XKit.interface.post_window.**type**()
 
+Returns a string containing the post type.  Possible values are:
+* text
+* photo
+* quote
+* link
+* conversation
+* video
+* audio
+
+
+Example usage:
+
+```javascript
+post.type = XKit.interface.post_window.type();
+if (post.type === "conversation") {
+    alert("Let's chat!");
+}
+```
+
+<a name="pw_post_type" href="XKit.interface.md#pw_post_type">#</a> XKit.interface.post_window.**post_type**()
+
 Returns an object containing post type information, with the following boolean properties:
 * text
 * photo
@@ -260,7 +281,7 @@ Returns an object containing post type information, with the following boolean p
 Example usage:
 
 ```javascript
-var post_type = XKit.interface.post_window.type();
+var post_type = XKit.interface.post_window.post_type();
 if (post_type.audio) {
     alert("Yay for audio!");
 }
