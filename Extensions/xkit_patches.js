@@ -1,5 +1,5 @@
 //* TITLE XKit Patches **//
-//* VERSION 6.2.3 **//
+//* VERSION 6.2.4 **//
 //* DESCRIPTION Patches framework **//
 //* DEVELOPER new-xkit **//
 
@@ -830,13 +830,19 @@ XKit.tools.getParameterByName = function(name){
 				},
 
 				type: function() {
-					var to_return = {};
-					var types = ['text', 'photo', 'quote', 'link', 'chat', 'audio', 'video'];
+					var types = {
+						'text': 'text',
+						'photo': 'photo',
+						'quote': 'quote',
+						'link': 'link',
+						'chat': 'conversation',
+						'audio': 'audio',
+						'video': 'video'
+					};
 					var form = $('.post-form');
-					for (var i = 0; i < types.length; i++) {
-						var type = types[i];
+					for (var type in types) {
 						if (form.hasClass('post-form--' + type)) {
-							return type;
+							return types[type];
 						}
 					}
 					// Default to text
